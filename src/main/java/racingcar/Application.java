@@ -2,15 +2,19 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.banner.OpeningMent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 class RacingController{
+    private final OpeningMent openingMent;
+    public RacingController(){
+        openingMent = new OpeningMent();
+    }
     public void run(){
         //openingMent
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼(,) 기준으로 구분");
-
+        openingMent.ment();
         //입력받기
         String participant = Console.readLine();
 
