@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Parser.InputParser;
 import racingcar.banner.OpeningMent;
+import racingcar.domain.ParticipantRegistry;
 import racingcar.io.InputView;
 
 import java.util.ArrayList;
@@ -13,10 +14,12 @@ class RacingController{
     private final OpeningMent openingMent;
     private final InputView inputView;
     private final InputParser inputParser;
+    private final ParticipantRegistry registry;
     public RacingController(){
         openingMent = new OpeningMent();
         inputView = new InputView();
         inputParser = new InputParser();
+        registry = new ParticipantRegistry();
     }
     public void run(){
         //openingMent
@@ -29,14 +32,7 @@ class RacingController{
         StringBuilder[] participantsStraight = inputParser.parse(participant);
 
         //참가자 결정
-        for (int i = 0; i < participants.length; i++) {
-            //참가자 유효성 검사
-            if(participants[i].length()>5){
-                throw new IllegalArgumentException("자동차 이름은 5자이하여야함 ");
-            }
-            StringBuilder str = new StringBuilder(participants[i]);
-            participantsStraight[i] = str.append(" : "); //참가자 결정
-        }
+        participantsStraight = registry.decide(participants, participantsStraight);
 
         //시도 횟수 받기
         System.out.println("시도할 횟수는 몇 회 인가요?");
