@@ -1,5 +1,5 @@
 package racingcar.banner;
 
-interface Banner {
+public interface Banner {
     void ment();
 }

@@ -3,30 +3,30 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Parser.InputParser;
-import racingcar.banner.OpeningMent;
-import racingcar.banner.TryCountMent;
+import racingcar.banner.Banner;
+import racingcar.banner.OpeningBanner;
+import racingcar.banner.TryCountBanner;
 import racingcar.domain.ParticipantRegistry;
 import racingcar.io.InputView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 class RacingController{
-    private final OpeningMent openingMent;
+    private final Banner openingBanner;
+    private final Banner tryCountBanner;
     private final InputView inputView;
     private final InputParser inputParser;
     private final ParticipantRegistry registry;
-    private final TryCountMent tryCountMent;
     public RacingController(){
-        openingMent = new OpeningMent();
+        openingBanner = new OpeningBanner();
+        tryCountBanner = new TryCountBanner();
         inputView = new InputView();
         inputParser = new InputParser();
         registry = new ParticipantRegistry();
-        tryCountMent = new TryCountMent();
     }
     public void run(){
         //openingMent
-        openingMent.ment();
+        openingBanner.ment();
         //입력받기
         String participant = inputView.input();
 
@@ -38,7 +38,7 @@ class RacingController{
         participantsStraight = registry.decide(participants, participantsStraight);
 
         //시도 횟수 받기
-        tryCountMent.ment();
+        tryCountBanner.ment();
         String countStr = Console.readLine();
         int count = Integer.parseInt(countStr);
         System.out.println("실행결과");
