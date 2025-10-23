@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.Parser.InputParser;
 import racingcar.banner.OpeningMent;
 import racingcar.io.InputView;
 
@@ -11,9 +12,11 @@ import java.util.HashMap;
 class RacingController{
     private final OpeningMent openingMent;
     private final InputView inputView;
+    private final InputParser inputParser;
     public RacingController(){
         openingMent = new OpeningMent();
         inputView = new InputView();
+        inputParser = new InputParser();
     }
     public void run(){
         //openingMent
@@ -22,8 +25,8 @@ class RacingController{
         String participant = inputView.input();
 
         //입력값 처리
-        String[] participants = participant.split(",");
-        StringBuilder[] participantsStraight = new StringBuilder[participants.length];
+        String[] participants = inputParser.namesParse(participant);
+        StringBuilder[] participantsStraight = inputParser.parse(participant);
 
         //참가자 결정
         for (int i = 0; i < participants.length; i++) {
