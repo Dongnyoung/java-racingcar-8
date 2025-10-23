@@ -3,20 +3,23 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.banner.OpeningMent;
+import racingcar.io.InputView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 class RacingController{
     private final OpeningMent openingMent;
+    private final InputView inputView;
     public RacingController(){
         openingMent = new OpeningMent();
+        inputView = new InputView();
     }
     public void run(){
         //openingMent
         openingMent.ment();
         //입력받기
-        String participant = Console.readLine();
+        String participant = inputView.input();
 
         //입력값 처리
         String[] participants = participant.split(",");
