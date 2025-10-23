@@ -9,4 +9,7 @@ public class InputParser {
         String[] parts = namesParse(participants);
         return new StringBuilder[parts.length];
     }
+    public int stringToInt(String input){
+        return Integer.parseInt(input);
+    }
 }
