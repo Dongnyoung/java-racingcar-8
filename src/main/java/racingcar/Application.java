@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Parser.InputParser;
 import racingcar.banner.Banner;
 import racingcar.banner.OpeningBanner;
+import racingcar.banner.ResultBanner;
 import racingcar.banner.TryCountBanner;
 import racingcar.domain.ParticipantRegistry;
 import racingcar.io.InputView;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 class RacingController{
     private final Banner openingBanner;
     private final Banner tryCountBanner;
+    private final Banner resultBanner;
     private final InputView inputView;
     private final InputParser inputParser;
     private final ParticipantRegistry registry;
@@ -23,6 +25,7 @@ class RacingController{
         inputView = new InputView();
         inputParser = new InputParser();
         registry = new ParticipantRegistry();
+        resultBanner = new ResultBanner();
     }
     public void run(){
         //openingMent
@@ -39,9 +42,9 @@ class RacingController{
 
         //시도 횟수 받기
         tryCountBanner.ment();
-        String countStr = Console.readLine();
-        int count = Integer.parseInt(countStr);
-        System.out.println("실행결과");
+        String countStr = inputView.input();
+        int count = inputParser.stringToInt(countStr);
+        resultBanner.ment();
 
         //전진 로직
         while(count > 0) {
