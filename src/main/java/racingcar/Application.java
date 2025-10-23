@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Parser.InputParser;
 import racingcar.banner.OpeningMent;
+import racingcar.banner.TryCountMent;
 import racingcar.domain.ParticipantRegistry;
 import racingcar.io.InputView;
 
@@ -15,11 +16,13 @@ class RacingController{
     private final InputView inputView;
     private final InputParser inputParser;
     private final ParticipantRegistry registry;
+    private final TryCountMent tryCountMent;
     public RacingController(){
         openingMent = new OpeningMent();
         inputView = new InputView();
         inputParser = new InputParser();
         registry = new ParticipantRegistry();
+        tryCountMent = new TryCountMent();
     }
     public void run(){
         //openingMent
@@ -35,7 +38,7 @@ class RacingController{
         participantsStraight = registry.decide(participants, participantsStraight);
 
         //시도 횟수 받기
-        System.out.println("시도할 횟수는 몇 회 인가요?");
+        tryCountMent.ment();
         String countStr = Console.readLine();
         int count = Integer.parseInt(countStr);
         System.out.println("실행결과");
