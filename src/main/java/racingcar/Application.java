@@ -7,11 +7,9 @@ import racingcar.banner.Banner;
 import racingcar.banner.OpeningBanner;
 import racingcar.banner.ResultBanner;
 import racingcar.banner.TryCountBanner;
-import racingcar.domain.MaxMoveFinder;
-import racingcar.domain.MoveCounter;
-import racingcar.domain.Movement;
-import racingcar.domain.ParticipantRegistry;
+import racingcar.domain.*;
 import racingcar.io.InputView;
+import racingcar.io.WinnerView;
 
 import java.util.HashMap;
 
@@ -67,34 +65,14 @@ class RacingController{
         maxMoveFinder.maxCount(participants);
         int maxStraightCount = maxMoveFinder.getMaxStraightCount();
 
-        /*
-        if(maxStraightCount==0){
-            System.out.println("최종우승자 : ");
-            return;
-        }
-
-         */
-
         //우승자 결정
-        StringBuilder winnerStr = new StringBuilder();
-        for(String part : participants) {
-            if(maxStraightCount ==straightCountMap.get(part)){
-                winnerStr.append(part);
-                winnerStr.append(", ");
-            }
-        }
-        winnerStr.delete(winnerStr.length()-2,winnerStr.length());
+        WinnerDecider winnerDecider = new WinnerDecider(maxStraightCount,straightCountMap);
+        winnerDecider.decide(participants);
+        StringBuilder winnerStr = winnerDecider.getWinnerStrBuilder();
 
         //우승자 출력
-        String[] answer = winnerStr.toString().split(",");
-        System.out.print("최종 우승자 : ");
-        for (int i = 0; i < answer.length; i++) {
-            System.out.print(answer[i].trim()); //앞뒤공백제거
-            if (i < answer.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println();
+        WinnerView winnerView = new WinnerView();
+        winnerView.printWinner(winnerStr);
     }
 }
 
