@@ -7,6 +7,7 @@ import racingcar.banner.Banner;
 import racingcar.banner.OpeningBanner;
 import racingcar.banner.ResultBanner;
 import racingcar.banner.TryCountBanner;
+import racingcar.domain.MaxMoveFinder;
 import racingcar.domain.MoveCounter;
 import racingcar.domain.Movement;
 import racingcar.domain.ParticipantRegistry;
@@ -61,19 +62,11 @@ class RacingController{
         moveCount.moveCheck(participantsStraight);
         HashMap<String,Integer> straightCountMap = moveCount.getStraightCountMap();
 
-        //디버깅
-        /*
-        for(String part : participants) {
-
-            System.out.println(straightCountMap.get(part));
-        }
-
-         */
         //가장 많이 전진한 횟수 체크
-        int maxStraightCount = 0;
-        for(String part : participants) {
-            maxStraightCount = Math.max(maxStraightCount, straightCountMap.get(part));
-        }
+        MaxMoveFinder maxMoveFinder = new MaxMoveFinder(straightCountMap);
+        maxMoveFinder.maxCount(participants);
+        int maxStraightCount = maxMoveFinder.getMaxStraightCount();
+
         /*
         if(maxStraightCount==0){
             System.out.println("최종우승자 : ");
