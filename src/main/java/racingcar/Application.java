@@ -7,6 +7,7 @@ import racingcar.banner.Banner;
 import racingcar.banner.OpeningBanner;
 import racingcar.banner.ResultBanner;
 import racingcar.banner.TryCountBanner;
+import racingcar.domain.MoveCounter;
 import racingcar.domain.Movement;
 import racingcar.domain.ParticipantRegistry;
 import racingcar.io.InputView;
@@ -53,32 +54,13 @@ class RacingController{
         movement.move(count);
         participantsStraight = movement.getMoveStraight();
 
-        //참가자들의 전친횟수를 저장하는 map
-        HashMap<String,Integer> straightCountMap = new HashMap<>();
-        //초기화
-        for(String part : participants) {
-            straightCountMap.put(part,0);
-        }
-        //직진 개수 체크
-        for(StringBuilder part : participantsStraight) {
-            String partStr = part.toString();
-            //System.out.println(partStr);
-            int straightCount =0;
-            for(char c : partStr.toCharArray()) {
-                if (c == '-') {
-                    straightCount++;
-                }
+        //참가자들의 전진횟수를 저장하는 map,초기화
+        MoveCounter moveCount = new MoveCounter(participants);
 
-            }
-            String p = "";
-            for(char c : partStr.toCharArray()){
-                if( c==' '){
-                    break;
-                }
-                p+=String.valueOf(c);
-            }
-            straightCountMap.put(p,straightCount);
-        }
+        //직진 개수 체크
+        moveCount.moveCheck(participantsStraight);
+        HashMap<String,Integer> straightCountMap = moveCount.getStraightCountMap();
+
         //디버깅
         /*
         for(String part : participants) {
