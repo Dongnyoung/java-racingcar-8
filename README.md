@@ -43,7 +43,6 @@
 
 ### 우승자 출력 클래스 (WinnerView)
 - 우승자StringBuilder깨끗하게 처리
-
 - 우승자 출력  (String[] 이용)
 - 우승자 출력 멘트
 
