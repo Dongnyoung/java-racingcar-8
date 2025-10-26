@@ -1,4 +1,4 @@
-package racingcar.banner;
+package racingcar.view.banner;
 
 public class TryCountBanner implements Banner {
     @Override
