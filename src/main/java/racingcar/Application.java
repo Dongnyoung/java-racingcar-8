@@ -2,10 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.Parser.InputParser;
-import racingcar.view.banner.Banner;
-import racingcar.view.banner.OpeningBanner;
-import racingcar.view.banner.ResultBanner;
-import racingcar.view.banner.TryCountBanner;
+import racingcar.view.banner.*;
 import racingcar.domain.*;
 import racingcar.domain.service.MoveCounter;
 import racingcar.domain.service.Movement;
@@ -16,25 +13,21 @@ import racingcar.RaceService;
 import java.util.HashMap;
 
 class RacingController{
-    private final Banner openingBanner;
-    private final Banner tryCountBanner;
-    private final Banner resultBanner;
+    private final BannerFacade banners;
     private final InputView inputView;
     private final InputParser inputParser;
     private final ParticipantRegistry registry;
     private final RaceService raceService;
     public RacingController(){
-        openingBanner = new OpeningBanner();
-        tryCountBanner = new TryCountBanner();
-        inputView = new InputView();
-        inputParser = new InputParser();
-        registry = new ParticipantRegistry();
-        resultBanner = new ResultBanner();
-        raceService= new RaceService();
+        this.banners = new BannerFacade();
+        this.inputView = new InputView();
+        this.inputParser = new InputParser();
+        this.registry = new ParticipantRegistry();
+        this.raceService= new RaceService();
     }
     public void run(){
         //openingMent
-        openingBanner.ment();
+        banners.opening();
         //입력받기
         String participant = inputView.input();
 
@@ -46,10 +39,10 @@ class RacingController{
         progresses = registry.decide(participants, progresses);
 
         //시도 횟수 받기
-        tryCountBanner.ment();
+        banners.askTryCount();
         String countStr = inputView.input();
         int count = inputParser.stringToInt(countStr);
-        resultBanner.ment();
+        banners.result();
 
         //핵심 비즈니스 RaceService에 위임
         StringBuilder winnerStr = raceService.run(participants, progresses, count);
