@@ -4,13 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.Parser.InputParser;
 import racingcar.view.banner.*;
 import racingcar.domain.*;
-import racingcar.domain.service.MoveCounter;
-import racingcar.domain.service.Movement;
 import racingcar.view.io.InputView;
 import racingcar.view.io.WinnerView;
-import racingcar.RacingController;
-import racingcar.RaceService;
-import java.util.HashMap;
 
 class RacingController{
     private final BannerFacade banners;
