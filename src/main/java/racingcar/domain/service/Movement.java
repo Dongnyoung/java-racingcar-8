@@ -1,7 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.view.ProgressView;
+import racingcar.view.io.ProgressView;
 
 public class Movement {
     private StringBuilder[] moveStraight;

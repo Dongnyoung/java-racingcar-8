@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.service;
 
 import java.util.HashMap;
 
