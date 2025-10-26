@@ -8,6 +8,9 @@
 
 ### 시작/안내 멘트 클래스 (Banner)
 
+### 배너 구현체 관리 클래스 (BannerFacade)
+- 컨트롤러 부담을 최소화하기 위해 구현체들을 관리
+
 ### 입력클래스 (InputView)
 
 ### 입력값 처리 클래스 (InputParser)
@@ -40,6 +43,10 @@
 ### 우승자 결정 클래스 (WinnerDecider)
 
 - 우승자 결정 (가장많이 전진한 횟수를 기반으로)
+
+### 전진,전진횟수,우승자 결정 등을 통합한 핵심 서비스로직 (RaceService)
+- Movement,MoveCounter,MaxMoveFinder,WinnerDecider 이용
+- 우승자를 결정하여 반환
 
 ### 우승자 출력 클래스 (WinnerView)
 - 우승자StringBuilder깨끗하게 처리
