@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.io;
 
 public class ProgressView {
     public void print(StringBuilder[] moveStraight) {

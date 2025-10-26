@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.view.io;
 
 public class WinnerView {
     public void printWinner(StringBuilder winnerStr){

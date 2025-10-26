@@ -1,4 +1,4 @@
-package racingcar.banner;
+package racingcar.view.banner;
 
 public class ResultBanner implements Banner {
     @Override
