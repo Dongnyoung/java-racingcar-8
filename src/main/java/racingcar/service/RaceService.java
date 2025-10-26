@@ -1,9 +1,4 @@
-package racingcar;
-
-import racingcar.domain.WinnerDecider;
-import racingcar.domain.service.MaxMoveFinder;
-import racingcar.domain.service.MoveCounter;
-import racingcar.domain.service.Movement;
+package racingcar.service;
 
 import java.util.HashMap;
 

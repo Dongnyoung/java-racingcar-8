@@ -1,4 +1,4 @@
-package racingcar.domain.service;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.io.ProgressView;
