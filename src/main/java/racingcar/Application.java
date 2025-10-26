@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.Parser.InputParser;
+import racingcar.service.RaceService;
 import racingcar.view.banner.*;
 import racingcar.domain.*;
 import racingcar.view.io.InputView;
