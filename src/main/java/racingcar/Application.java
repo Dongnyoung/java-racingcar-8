@@ -1,15 +1,17 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.Parser.InputParser;
-import racingcar.banner.Banner;
-import racingcar.banner.OpeningBanner;
-import racingcar.banner.ResultBanner;
-import racingcar.banner.TryCountBanner;
+import racingcar.view.banner.Banner;
+import racingcar.view.banner.OpeningBanner;
+import racingcar.view.banner.ResultBanner;
+import racingcar.view.banner.TryCountBanner;
 import racingcar.domain.*;
-import racingcar.io.InputView;
-import racingcar.io.WinnerView;
+import racingcar.domain.service.MaxMoveFinder;
+import racingcar.domain.service.MoveCounter;
+import racingcar.domain.service.Movement;
+import racingcar.view.io.InputView;
+import racingcar.view.io.WinnerView;
 
 import java.util.HashMap;
 
