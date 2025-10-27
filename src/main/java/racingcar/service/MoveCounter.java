@@ -16,24 +16,34 @@ public class MoveCounter {
         for(StringBuilder part : participantsStraight) {
             String partStr = part.toString();
             //System.out.println(partStr);
-            int straightCount =0;
-            for(char c : partStr.toCharArray()) {
-                if (c == '-') {
-                    straightCount++;
-                }
-
-            }
-            StringBuilder p = new StringBuilder();
-            for(char c : partStr.toCharArray()){
-                if(c==' '){
-                    break;
-                }
-                p.append(c);
-            }
-            String name = p.toString();
+            int straightCount = getStraightCount(partStr);
+            String name = getString(partStr);
             straightCountMap.put(name,straightCount);
         }
     }
+
+    private String getString(String partStr) {
+        StringBuilder p = new StringBuilder();
+        for(char c : partStr.toCharArray()){
+            if(c==' '){
+                break;
+            }
+            p.append(c);
+        }
+        return p.toString();
+    }
+
+    private int getStraightCount(String partStr) {
+        int straightCount =0;
+        for(char c : partStr.toCharArray()) {
+            if (c == '-') {
+                straightCount++;
+            }
+
+        }
+        return straightCount;
+    }
+
     public HashMap<String,Integer> getStraightCountMap() {
         return new HashMap<>(straightCountMap); //그냥 해쉬맵을 반환하면 외부에서 수정 가능할 수 있음.
     }
